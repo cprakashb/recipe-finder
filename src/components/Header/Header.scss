@@ -1,0 +1,20 @@
+.navbar {
+    position: fixed;
+    top: 0;
+    right: 0;
+    width: 100%;
+    z-index: 10000;
+    box-shadow: 0 3px 5px rgba(57, 63, 72, .3);
+}
+
+
+.search-form {
+    width: 50%;
+    .search {
+        box-shadow: none !important;
+        border-radius: 25px 15px;
+        padding-left: 15px;
+        font-style: italic;
+    }
+}
+

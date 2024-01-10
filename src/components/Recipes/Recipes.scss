@@ -1,0 +1,30 @@
+.source {
+  text-decoration: none;
+  text-underline-offset: 4px;
+
+  &:hover {
+    text-decoration: underline;
+  }
+}
+
+
+.recipe-card{
+  width: 18rem;
+  &:hover{
+    cursor: pointer;
+    transform: translate3D(0,-1px,0) scale(1.03); 
+    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+  }
+}
+
+
+.dark {
+  .recipe-card {
+    background-color: #2B3035;
+    color: white;
+  }
+
+  .hyper-link {
+    color: #58a6ff;
+  }
+}
