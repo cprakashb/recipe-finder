@@ -1,4 +1,4 @@
-import { useContext, useState } from 'react';
+import { useContext, useEffect, useState } from 'react';
 import Toggle from 'react-toggle';
 import { ThemeContext } from '../../App';
 import { useOnlineStatus } from '../../hooks/useOnlineStatus';
@@ -12,6 +12,10 @@ function Header({ store }) {
     const themeContextObject = useContext(ThemeContext)
     const [isToggleChecked, setIsToggleChecked] = useState(false);
     const isOnline = useOnlineStatus();
+
+    useEffect(() => {
+        queryRecipes('bread');
+    }, [queryRecipes])
 
     const handleToggle = (event) => {
         if (event.target.checked) {
