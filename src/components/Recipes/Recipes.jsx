@@ -10,7 +10,7 @@ function Recipes({ store }) {
 
     return (
         <div className={`recipe-section ${themeContextObject.theme}`} >
-            <section className="d-flex flex-row gap-4 flex-wrap justify-content-start container mt-4" >
+            <section className="d-flex flex-row gap-4 flex-wrap justify-content-center justify-content-lg-start container mt-4" >
                 {
                     recipes && recipes.map((each, index) => {
                         return (
