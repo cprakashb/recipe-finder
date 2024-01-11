@@ -1,3 +1,7 @@
+.recipe-section {
+  margin-top: 90px;
+}
+
 .source {
   text-decoration: none;
   text-underline-offset: 4px;
@@ -8,11 +12,12 @@
 }
 
 
-.recipe-card{
+.recipe-card {
   width: 18rem;
-  &:hover{
+
+  &:hover {
     cursor: pointer;
-    transform: translate3D(0,-1px,0) scale(1.03); 
+    transform: translate3D(0, -1px, 0) scale(1.03);
     box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
   }
 }

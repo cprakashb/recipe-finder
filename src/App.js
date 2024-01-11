@@ -1,16 +1,19 @@
 import './App.scss';
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
-import { Recipes } from './components/Recipes/Recipes';
-import { Header } from './components/Header/Header';
+import Header from './components/Header/Header';
+import Recipes from './components/Recipes/Recipes';
 import { createContext, useState } from 'react';
-import Footer from './components/Footer/Footer';
 import { THEME } from './constants';
+
+import RecipeStore from "./store/RecipeStore";
 
 export const ThemeContext = createContext();
 
 function App() {
 
   const [theme, setTheme] = useState(THEME.LIGHT)
+
+  const store = new RecipeStore();
 
   const changeTheme = (value) => {
     setTheme(value)
@@ -19,13 +22,12 @@ function App() {
   return (
     <div className={`${theme}`}>
       <ThemeContext.Provider value={{ theme, changeTheme }}>
-        <Header />
+        <Header store={store} />
         <BrowserRouter>
           <Routes>
-            <Route path='/' element={<Recipes />} />
+            <Route path='/' element={<Recipes store={store} />} />
           </Routes>
         </BrowserRouter>
-        <Footer />
       </ThemeContext.Provider>
     </div>
   );

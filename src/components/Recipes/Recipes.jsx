@@ -1,30 +1,16 @@
-import { useContext, useEffect, useState } from "react"
-import { RECIPE_SEARCH_URL } from "../../constants"
+import { useContext } from "react"
 import { ThemeContext } from "../../App";
+import { observer } from "mobx-react";
 import './Recipes.scss';
 
-export function Recipes() {
+function Recipes({ store }) {
+
+    const { recipes } = store;
     const themeContextObject = useContext(ThemeContext)
-    const [searchQuery, setSearchQuery] = useState('bread');
-    const [recipes, setRecipes] = useState([]);
-
-    useEffect(() => {
-        fetch(`${RECIPE_SEARCH_URL}${searchQuery}`).then(res => res.json()).then(res => {
-            if (res?.hits)
-                setRecipes(res?.hits)
-            else
-                setRecipes([])
-        })
-    }, [searchQuery])
-
-    const handleChange = (event) => {
-        setSearchQuery(event.target.value)
-    }
 
     return (
-        <div className={`mt-5 ${themeContextObject.theme}`} >
-            <input className="form-control search me-4"  type="search" placeholder="Search" aria-label="Search" onChange={handleChange}></input>
-            <section className="d-flex flex-row gap-5 flex-wrap justify-content-center mt-4" >
+        <div className={`recipe-section ${themeContextObject.theme}`} >
+            <section className="d-flex flex-row gap-4 flex-wrap justify-content-start container mt-4" >
                 {
                     recipes && recipes.map((each, index) => {
                         return (
@@ -47,3 +33,5 @@ export function Recipes() {
         </div>
     )
 }
+
+export default observer(Recipes)
