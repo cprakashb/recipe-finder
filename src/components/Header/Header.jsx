@@ -6,6 +6,7 @@ import { THEME } from '../../constants';
 import "react-toggle/style.css"
 import './Header.scss';
 import { observer } from 'mobx-react';
+import debounce from '../../utils/debounce';
 
 function Header({ store }) {
     const { queryRecipes } = store;
@@ -28,9 +29,9 @@ function Header({ store }) {
         }
     }
 
-    const handleChange = (event) => {
+    const handleChange = debounce((event) => {
         queryRecipes(event.target.value)
-    }
+    }, 500)
 
     return (
         <nav className="navbar navbar-expand-lg bg-body-tertiary" data-bs-theme={themeContextObject.theme}>

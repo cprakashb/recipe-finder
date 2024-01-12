@@ -2,6 +2,7 @@ import { useContext } from "react"
 import { ThemeContext } from "../../App";
 import { observer } from "mobx-react";
 import './Recipes.scss';
+import Logger from "../HOC/Logger";
 
 function Recipes({ store }) {
 
@@ -34,4 +35,5 @@ function Recipes({ store }) {
     )
 }
 
-export default observer(Recipes)
+const RecipesComponent = observer(Recipes)
+export default Logger(RecipesComponent)
